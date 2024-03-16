@@ -27,15 +27,14 @@ public class BankingController {
     public BankingEntity newAccount(@RequestBody BankingEntity entity){
         return service.createAccount(entity);
     }
-    @PutMapping("/updateAccount{id}")
+    @PutMapping("/updateAccount/{id}")
     public BankingEntity updateAccount(@PathVariable Long id, @RequestBody BankingEntity entity){
         return service.updateAccount(id, entity);
     }
 
-    @DeleteMapping("/deleteAccount{id}")
-    public ResponseEntity<String> deleteAccount(Long id){
-        String result = service.deleteAccount(id);
-        return ResponseEntity.ok(result);
+    @DeleteMapping("/deleteAccount/{id}")
+    public void deleteAccount(@PathVariable Long id){
+         service.deleteAccount(id);
     }
 }
 
